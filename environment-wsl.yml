@@ -61,7 +61,6 @@ dependencies:
       - pillow==10.3.0
       - prefetch-generator==1.0.3
       - promise==2.3
-      - protobuf==3.20.1
       - psutil==5.9.8
       - pyarrow==15.0.2
       - pycparser==2.22

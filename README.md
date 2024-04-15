@@ -1,3 +1,28 @@
+# Fork
+
+For fast setup on WSL run:
+```bash
+conda env create --name calm -f environment-wsl.yml
+conda activate calm
+pip install https://github.com/learning-at-home/hivemind/archive/calm.zip
+pip install protobuf==3.20.1
+```
+
+To run aux peer change port if neccessery in `run_aux.sh` and use:
+```bash
+conda activate calm
+./setup.sh
+./run_aux.sh
+```
+
+To run trainer change initial peers in `run_trainer.sh` and use:
+```bash
+conda activate calm
+./setup.sh
+./run_trainer.sh
+```
+# Original README
+
 <img src="./assets/CALMLogo.png" width="600" alt="CALM Logo">
 
 The CALM project is joint effort lead by [NCAI](https://sdaia.gov.sa/ncai/?Lang=en) in collaboration with [Yandex](https://yandex.com/) and [HuggingFace](https://huggingface.co/) to train an Arabic language model with volunteers from around the globe. The project is an adaptation of the framework proposed at the NeurIPS 2021 demonstration: [Training Transformers Together](https://huggingface.co/training-transformers-together). 
