@@ -22,4 +22,4 @@ export WANDB_DISABLED=true
 
 ulimit -n 16384 # this line is important, ignoring it may cause Too Many Open Files
 
-python run_aux_peer.py --run_id $EXP_NAME --host_maddrs $LISTEN_ON --announce_maddrs $ANNOUNCE_ON --identity ./identity  --assist_in_averaging --bandwidth $BANDWIDTH --authorize False # --per_device_train_batch_size 0 --store_checkpoints --upload_interval 43200 --repo_url $HF_ORGANIZATION_NAME/$HF_MODEL_NAME --authorize
+python run_aux_peer.py --run_id $EXP_NAME --host_maddrs $LISTEN_ON --announce_maddrs $ANNOUNCE_ON --identity ./identity --assist_in_averaging --bandwidth $BANDWIDTH --authorize False --auxiliary # --store_checkpoints --upload_interval 43200 --repo_url $HF_ORGANIZATION_NAME/$HF_MODEL_NAME --authorize

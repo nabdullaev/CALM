@@ -38,6 +38,7 @@ class CollaborativeArguments:
             "advanced techniques (e.g. changing loss scaler to a custom one)."
         },
     )
+    auxiliary: bool = field(default=False, metadata={"help": "Whether or not peer is auxilary"})
 
 
 @dataclass

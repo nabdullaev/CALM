@@ -105,7 +105,7 @@ class MLMTrainingTask:
                 scheduler=self._make_scheduler,
                 grad_compression=averaging_compression,
                 state_averaging_compression=averaging_compression,
-                batch_size_per_step=self.trainer_args.batch_size_per_step,
+                batch_size_per_step=self.trainer_args.batch_size_per_step if not self.collab_args.auxiliary else None,
                 client_mode=self.peer_args.client_mode,
                 verbose=True,
                 averager_opts=dict(min_vector_size=self.peer_args.min_vector_size, bandwidth=self.peer_args.bandwidth),
