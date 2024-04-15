@@ -4,6 +4,8 @@ For fast setup on WSL run:
 ```bash
 conda env create --name calm -f environment-wsl.yml
 conda activate calm
+# CUDA 11.3
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
 pip install https://github.com/learning-at-home/hivemind/archive/calm.zip
 pip install protobuf==3.20.1
 ```
