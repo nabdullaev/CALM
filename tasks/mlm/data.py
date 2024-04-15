@@ -29,28 +29,15 @@ def make_training_dataset(
     if not isinstance(max_sequence_length, mp.sharedctypes.Synchronized):
         assert isinstance(max_sequence_length, int)
         max_sequence_length = mp.Value(ctypes.c_int64, max_sequence_length)
-    assert os.getenv("HF_USER_ACCESS_TOKEN") is not None, (
-        "Loading members-only data requires that you provide your"
-        " HF access token (HF_USER_ACCESS_TOKEN environment variable)"
-    )
     wiki = load_dataset("CALM/arwiki", split="train", data_files=['arwiki_2021_bigger_chuncks/*'], streaming=True)
     oscar = load_dataset("oscar", "unshuffled_deduplicated_ar", split="train", streaming=True)
-
-    try:
-        # loading the guld dataset that is private within the CALM organization, it requires HF user access token
-        gulf = load_dataset(
-            "CALM/CALM-Gulf", data_files=['GulfData.csv'], use_auth_token=os.getenv("HF_USER_ACCESS_TOKEN"), split="train", streaming=True
-        )
-    except FileNotFoundError:
-        raise Exception("Failed to load CALM-Gulf dataset, this is likely because your HF_USER_ACCESS_TOKEN is invalid")
 
     # both should have the same columns
     wiki = wiki.map(lambda x: {"text": x["text"]}, batched=True)
     oscar = oscar.map(lambda x: {"text": x["text"]}, batched=True)
-    gulf = gulf.map(lambda x: {"text": x["text"]}, batched=True)
 
     # merge, shuffle and set pytorch format
-    dataset = interleave_datasets([wiki, gulf, oscar], probabilities=[0.1, 0.25, 0.65])
+    dataset = interleave_datasets([wiki, oscar], probabilities=[0.35, 0.65])
     dataset = dataset.shuffle(shuffle_buffer_size, seed=shuffle_seed)
     # ^-- this creates a buffer of random examples that will be refilled in background
 
