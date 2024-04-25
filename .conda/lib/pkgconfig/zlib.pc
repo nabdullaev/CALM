@@ -1,0 +1,13 @@
+prefix=/Users/citadel/Downloads/CALM/.conda
+exec_prefix=/Users/citadel/Downloads/CALM/.conda
+libdir=/Users/citadel/Downloads/CALM/.conda/lib
+sharedlibdir=/Users/citadel/Downloads/CALM/.conda/lib
+includedir=/Users/citadel/Downloads/CALM/.conda/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
