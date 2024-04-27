@@ -1,7 +1,7 @@
 from typing import Dict, List, Tuple
 
 import transformers.utils.logging
-from hivemind import choose_ip_address
+from hivemind.utils.networking import choose_ip_address
 from hivemind.dht.crypto import RSASignatureValidator
 from hivemind.dht.schema import BytesWithPublicKey, SchemaValidator
 from hivemind.dht.validation import RecordValidatorBase
