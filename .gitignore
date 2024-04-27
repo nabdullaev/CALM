@@ -86,3 +86,5 @@ p2p-keygen
 speedtest.json
 identity
 log
+
+.conda/
